@@ -53,6 +53,9 @@ namespace api1
 
             app.UseHttpsRedirection();
 
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
             app.UseRouting();
 
             app.UseAuthorization();
