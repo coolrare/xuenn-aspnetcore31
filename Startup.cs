@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using api1.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +27,18 @@ namespace api1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            // services.AddSingleton<IAppSettings, AppSettings>();
+
+            // services.AddSingleton<IAppSettings>(new AppSettings() {
+            //     TimeoutSeconds = 30,
+            //     PartnerUrlBase = "https://mypartner.com.tw/"
+            // });
+
+            var appSettings = new AppSettings();
+            Configuration.GetSection("AppSettings").Bind(appSettings);
+            services.AddSingleton<IAppSettings>(appSettings);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
