@@ -14,7 +14,7 @@ namespace api1.Controllers
     {
         public AppSettings AppSettings { get; }
 
-        public TestController(IOptions<AppSettings> options)
+        public TestController(IOptionsSnapshot<AppSettings> options)
         {
             this.AppSettings = options.Value;
         }
