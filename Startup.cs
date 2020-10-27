@@ -35,9 +35,11 @@ namespace api1
             //     PartnerUrlBase = "https://mypartner.com.tw/"
             // });
 
-            var appSettings = new AppSettings();
-            Configuration.GetSection("AppSettings").Bind(appSettings);
-            services.AddSingleton<IAppSettings>(appSettings);
+            // var appSettings = new AppSettings();
+            // Configuration.GetSection("AppSettings").Bind(appSettings);
+            // services.AddSingleton<IAppSettings>(appSettings);
+
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
         }
 

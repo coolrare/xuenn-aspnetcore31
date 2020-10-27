@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using api1.Models;
+using Microsoft.Extensions.Options;
 
 namespace api1.Controllers
 {
@@ -13,9 +14,9 @@ namespace api1.Controllers
     {
         public AppSettings AppSettings { get; }
 
-        public TestController(IAppSettings appSettings)
+        public TestController(IOptions<AppSettings> options)
         {
-            this.AppSettings = appSettings as AppSettings;
+            this.AppSettings = options.Value;
         }
 
         [HttpGet("")]
