@@ -8,6 +8,7 @@ using api1.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -47,6 +48,8 @@ namespace api1
             services.Configure<JwtSettings>(Configuration.GetSection("JwtSettings"));
 
             services.AddSingleton<JwtHelpers>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             // Add OpenAPI v3 document
             services.AddOpenApiDocument();

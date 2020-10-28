@@ -7,6 +7,7 @@ using api1.Models;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
 
 namespace api1.Controllers
 {
@@ -20,9 +21,11 @@ namespace api1.Controllers
     {
         public AppSettings AppSettings { get; }
         public ILogger<TestController> Logger { get; }
+        public IHttpContextAccessor HttpContextAccessor { get; }
 
-        public TestController(ILogger<TestController> logger, IOptionsSnapshot<AppSettings> options)
+        public TestController(ILogger<TestController> logger, IOptionsSnapshot<AppSettings> options, IHttpContextAccessor httpContextAccessor)
         {
+            this.HttpContextAccessor = httpContextAccessor;
             this.Logger = logger;
             this.AppSettings = options.Value;
         }
@@ -38,5 +41,16 @@ namespace api1.Controllers
 
             return AppSettings;
         }
+
+        [HttpGet("/GetID")]
+        public ActionResult GetID()
+        {
+            return Ok(new
+            {
+                HttpContextAccessor.HttpContext.Connection.Id,
+                HttpContextAccessor.HttpContext.TraceIdentifier
+            });
+        }
+
     }
 }
