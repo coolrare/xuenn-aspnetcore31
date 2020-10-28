@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using api1.Models;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
 namespace api1.Controllers
 {
@@ -18,9 +19,11 @@ namespace api1.Controllers
     public class TestController : ControllerBase
     {
         public AppSettings AppSettings { get; }
+        public ILogger<TestController> Logger { get; }
 
-        public TestController(IOptionsSnapshot<AppSettings> options)
+        public TestController(ILogger<TestController> logger, IOptionsSnapshot<AppSettings> options)
         {
+            this.Logger = logger;
             this.AppSettings = options.Value;
         }
 
@@ -31,6 +34,8 @@ namespace api1.Controllers
         [HttpGet("")]
         public ActionResult<AppSettings> GetAppSettings()
         {
+            Logger.LogTrace(50, "123");
+
             return AppSettings;
         }
     }
