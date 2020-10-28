@@ -2,20 +2,21 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>5be3ba20-2816-4e76-bb9f-98457b85b264</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup>
     <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.9" />
-    <PackageReference Include="NSwag.AspNetCore" Version="13.8.2" />
-  </ItemGroup>
-
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.9" />
+    <PackageReference Include="NSwag.AspNetCore" Version="13.8.2" />
+  </ItemGroup>
 
 </Project>

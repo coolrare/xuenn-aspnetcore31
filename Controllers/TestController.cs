@@ -14,7 +14,7 @@ namespace api1.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    // [Authorize]
     public class TestController : ControllerBase
     {
         public AppSettings AppSettings { get; }
