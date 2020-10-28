@@ -92,7 +92,11 @@ namespace api1
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            if (env.EnvironmentName == "UAT")
+            {
+            }
+
+            // app.UseHttpsRedirection();
 
             app.UseDefaultFiles();
             app.UseStaticFiles();

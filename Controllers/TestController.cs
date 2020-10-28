@@ -34,7 +34,7 @@ namespace api1.Controllers
         [HttpGet("")]
         public ActionResult<AppSettings> GetAppSettings()
         {
-            Logger.LogTrace(50, "123");
+            Logger.LogDebug(50, "This is {ID} item.", 123);
 
             return AppSettings;
         }
